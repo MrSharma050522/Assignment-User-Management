@@ -1,7 +1,7 @@
 const Product = require("../models/product.model");
 const axios = require("axios");
 
-// ✅ Create Product
+// Create Product
 exports.createProduct = async (req, res) => {
 	try {
 		const { userId } = req.body;
@@ -21,7 +21,7 @@ exports.createProduct = async (req, res) => {
 	}
 };
 
-// ✅ Get All Products
+// Get All Products
 exports.getProducts = async (req, res) => {
 	try {
 		const products = await Product.findAll(); // Fetch all products
@@ -50,7 +50,7 @@ exports.getProducts = async (req, res) => {
 	}
 };
 
-// ✅ Get Single Product by ID
+// Get Single Product by ID
 exports.getProductById = async (req, res) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
@@ -62,7 +62,7 @@ exports.getProductById = async (req, res) => {
 	}
 };
 
-// ✅ Update Product
+// Update Product
 exports.updateProduct = async (req, res) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
@@ -76,7 +76,7 @@ exports.updateProduct = async (req, res) => {
 	}
 };
 
-// ✅ Delete Product
+// Delete Product
 exports.deleteProduct = async (req, res) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
