@@ -10,12 +10,18 @@ app.get("/", (req, res) => {
 	res.json({ message: "API Gateway is running. Use /users or /products" });
 });
 
+const proxyOptions = {
+    changeOrigin: true,
+    logLevel: "debug",
+};
+
 // Proxying Requests
 app.use(
 	"/users",
 	createProxyMiddleware({
 		target: "http://localhost:5001/users",
 		pathRewrite: { "^/users": "/" }, // Fixes forwarding to /users
+        ...proxyOptions,
 	})
 );
 app.use(
@@ -23,9 +29,10 @@ app.use(
 	createProxyMiddleware({
 		target: "http://localhost:5002/products",
 		pathRewrite: { "^/products": "/" }, // Fixes forwarding to /products
+        ...proxyOptions,
 	})
 );
 
 // Start Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5003;
 app.listen(PORT, () => console.log(`API Gateway running on port ${PORT}`));
