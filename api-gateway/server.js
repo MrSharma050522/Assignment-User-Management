@@ -20,7 +20,7 @@ app.use(
 	"/users",
 	createProxyMiddleware({
 		target: "http://localhost:5001/users",
-		pathRewrite: { "^/users": "/" }, // Fixes forwarding to /users
+		pathRewrite: { "^/users": "/" },
         ...proxyOptions,
 	})
 );
@@ -28,7 +28,7 @@ app.use(
 	"/products",
 	createProxyMiddleware({
 		target: "http://localhost:5002/products",
-		pathRewrite: { "^/products": "/" }, // Fixes forwarding to /products
+		pathRewrite: { "^/products": "/" },
         ...proxyOptions,
 	})
 );
